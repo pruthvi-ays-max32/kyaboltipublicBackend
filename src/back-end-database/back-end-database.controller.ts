@@ -5,7 +5,7 @@ import { CreateMessages } from './dto/create-messages.dto';
 import { UpdateContactListDto } from './dto/update-contactList.dto';
 import { UpdateMessagesDto } from './dto/update-messages.dto';
 
-@Controller('back-end-database')
+@Controller('contacts')
 export class BackEndDatabaseController {
   constructor(private readonly backEndDatabaseService: BackEndDatabaseService) {}
   
@@ -14,22 +14,22 @@ export class BackEndDatabaseController {
     return this.backEndDatabaseService.create(CreateContactList);
   }
 
-  @Get('/contactList')
+  @Get()
   findAll() {
     return this.backEndDatabaseService.findAll();
   }
 
-  @Get('Contact/:id')
+  @Get(':id')
   findOne(@Param('id') id: string) {
     return this.backEndDatabaseService.findOne(+id);
   }
 
-  @Patch('Contact/:id')
+  @Patch(':id')
   update(@Param('id') id: string, @Body() UpdateContactListDto: UpdateContactListDto) {
     return this.backEndDatabaseService.update(+id, UpdateContactListDto);
   }
 
-  @Delete('Contact/:id')
+  @Delete(':id')
   remove(@Param('id') id: string) {
     return this.backEndDatabaseService.remove(+id);
   }
@@ -39,26 +39,26 @@ export class BackEndDatabaseController {
 
   @Post('/addmsg')
   createm(@Body() CreateMessages: CreateMessages) {
-    return this.backEndDatabaseService.create(CreateMessages);
+    return this.backEndDatabaseService.createm(CreateMessages);
   }
 
-  @Get('/allmsg')
-  findAllm() {
-    return this.backEndDatabaseService.findAll();
-  }
+  // @Get('/allmsg')
+  // findAllm(){
+  //   return this.backEndDatabaseService.findAllm();
+  // }
 
-  @Get('Contact/:id/msg')
-  findOnem(@Param('id') id: string) {
-    return this.backEndDatabaseService.findOne(+id);
-  }
+  // @Get('msg/:id')
+  // findOnem(@Param('id') id: string) {
+  //   return this.backEndDatabaseService.findOnem(+id);
+  // }
 
-  @Patch('Contact/:id/msg')
-  updatem(@Param('id') id: string, @Body() UpdateMessagesDto: UpdateMessagesDto) {
-    return this.backEndDatabaseService.update(+id, UpdateMessagesDto);
-  }
+  // @Patch('msg/:id')
+  // updatem(@Param('id') id: string, @Body() UpdateMessagesDto: UpdateMessagesDto) {
+  //   return this.backEndDatabaseService.updatem(+id, UpdateMessagesDto);
+  // }
 
-  @Delete('Contact/:id/msg')
-  removem(@Param('id') id: string) {
-    return this.backEndDatabaseService.remove(+id);
-  }
+  // @Delete('msg/:id')
+  // removem(@Param('id') id: string) {
+  //   return this.backEndDatabaseService.removem(+id);
+  // }
 }

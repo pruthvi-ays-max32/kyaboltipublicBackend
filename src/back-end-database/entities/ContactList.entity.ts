@@ -1,13 +1,20 @@
-import { Entity,Column, PrimaryGeneratedColumn } from "typeorm";
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from "typeorm";
+import { message} from "./Messages.entity";
 
 @Entity()
-export class contactList{
+export class contactList {
     @PrimaryGeneratedColumn()
-    id : number;
+    id: number;
 
     @Column()
-    Name : string
+    Name: string;
 
     @Column()
-    ContactNo : string
+    ContactNo: string;
+
+    @OneToMany(() => message, message => message.sendBy)
+    sentMessages: message[];
+
+    @OneToMany(() => message, message => message.sendTo)
+    receivedMessages: message[];
 }

@@ -4,7 +4,7 @@ import { AppService } from './app.service';
 import { BackEndDatabaseModule } from './back-end-database/back-end-database.module';
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { contactList } from './back-end-database/entities/ContactList.entity';
-import { messages } from './back-end-database/entities/Messages.entity';
+import { message } from './back-end-database/entities/Messages.entity';
 
 @Module({
   imports: [BackEndDatabaseModule,
@@ -16,7 +16,7 @@ import { messages } from './back-end-database/entities/Messages.entity';
       password:'Sakshi@227',
       database:'kyaboltipublicdb',
       synchronize:true,
-      entities:[contactList, messages]
+      entities:[contactList, message]
     }),
   ],
   controllers: [AppController],
